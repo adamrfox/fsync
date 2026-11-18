@@ -1,0 +1,40 @@
+{
+  "default_cluster": "home-lab",
+  "clusters": {
+    "home-lab": {
+      "host": "pve1.example.com",
+      "port": 8006,
+      "user": "scanner@pve",
+      "token_name": "fsync",
+      "token_value": "your-token-secret-here",
+      "insecure": true,
+      "ssh_user": "root",
+      "ssh_key": "~/.ssh/id_ed25519"
+    },
+    "work": {
+      "host": "pve9.example.com",
+      "user": "admin@pve",
+      "password": "your-password-here",
+      "insecure": true,
+      "ssh_user": "deploy"
+    }
+  },
+  "files": [
+    {
+      "source": "/path/to/source/file",
+      "target": "/target/path/on/container/file",
+      "ssh_user": "midway",
+      "ssh_key": "~/.ssh/id_ed25519"
+    },
+    {
+      "source": "/path/to/another-file",
+      "target": "/etc/resolv.conf",
+      "ssh_user": "root"
+    },
+    {
+      "source": "relative/path/file.conf",
+      "target": "/etc/app/file.conf",
+      "include": ["100", "200"]
+    }
+  ]
+}
